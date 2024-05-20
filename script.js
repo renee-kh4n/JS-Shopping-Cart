@@ -1,3 +1,5 @@
+// May 20, 2024; 4:15pm - 5:50pm (step 1 to 30)
+
 const cartContainer = document.getElementById("cart-container");
 const productsContainer = document.getElementById("products-container");
 const dessertCards = document.getElementById("dessert-card-container");
