@@ -123,7 +123,16 @@ class ShoppingCart {
 
     // Step 27
     //The behaviour of the addItem method needs to change if the product is already in the cart or not. Create a ternary that checks if the current product is already in the cart. Use undefined for both the truthy and falsy expressions to avoid a syntax error.
+    //currentProductCount > 1 ? truthy : falsy;
+    currentProductCount > 1 
+      ? currentProductCountSpan.textContent = `${currentProductCount}x`
+      : productsContainer.innerHTML += `
+      <div id="dessert${id}" class="product">
+        <p>
 
-    
+        </p>
+        <p>${price}</p>
+      </div>
+      `;
   }
 };
