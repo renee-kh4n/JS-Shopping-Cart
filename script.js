@@ -131,10 +131,44 @@ class ShoppingCart {
       : productsContainer.innerHTML += `
       <div id="dessert${id}" class="product">
         <p>
-
+          <span class="product-count" id="product-count-for-id${id}"></span>${name}
         </p>
         <p>${price}</p>
       </div>
       `;
   }
+
+  getCounts() {
+    return this.items.length;
+  }
+
+  calculateTaxes(amount) {
+    //.toFixed() ensures correct calculation ; (2) corresponds to number of decimal places
+    return ((this.taxRate / 100) * amount).toFixed(2);
+  }
+
+  calculateTotal() {
+    //reduce((total, item from items) => calculation, initial value)
+    const subTotal = this.items.reduce((total, item) => total + item.price, 0);
+  }
 };
+
+    const cart = new ShoppingCart();
+    const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
+
+
+    //[...addToCartBtns] spread a collection of classes
+    [...addToCartBtns].forEach(
+    (btn) => {
+        btn.addEventListener("click", (event) => {
+        cart.addItem(Number(event.target.id), products);
+        totalNumberOfItems.textContent = cart.getCounts();
+        })
+    }
+    );
+
+    cartBtn.addEventListener("click", () => {
+    isCartShowing = !isCartShowing;
+    showHideCartSpan.textContent = isCartShowing ? "Hide" : "Show";
+    cartContainer.style.display = isCartShowing ? "block" : "none";
+    });
